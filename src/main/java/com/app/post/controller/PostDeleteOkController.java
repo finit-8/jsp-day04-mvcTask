@@ -1,6 +1,6 @@
 package com.app.post.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,26 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.app.Action;
 import com.app.Result;
 import com.app.dao.PostDAO;
-import com.app.vo.PostVO;
 
-public class PostWriteOkController implements Action{
-	@Override
+public class PostDeleteOkController implements Action{
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
-		
-		// jsp 작성화면의 form에 입력된 데이터를 받기 위한 코드
 		PostDAO postDAO = new PostDAO();
-		PostVO postVO = new PostVO();
+		Long id = Long.parseLong(req.getParameter("id"));
 		
-//		postVO.setId(Long.parseLong(req.getParameter("id")));
-		postVO.setPostTitle(req.getParameter("postTitle"));
-		postVO.setPostContent(req.getParameter("postContent"));
-		
-		postDAO.insert(postVO);
+		postDAO.delete(id);
 		
 		result.setRedirect(true);
 		result.setPath("/mvcTask/list.post");
 		return result;
 	}
-
 }

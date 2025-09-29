@@ -9,26 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.app.Action;
 import com.app.Result;
 import com.app.dao.PostDAO;
-import com.app.vo.PostVO;
 
-public class PostWriteOkController implements Action{
+public class PostListController implements Action{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
-		
-		// jsp 작성화면의 form에 입력된 데이터를 받기 위한 코드
 		PostDAO postDAO = new PostDAO();
-		PostVO postVO = new PostVO();
-		
-//		postVO.setId(Long.parseLong(req.getParameter("id")));
-		postVO.setPostTitle(req.getParameter("postTitle"));
-		postVO.setPostContent(req.getParameter("postContent"));
-		
-		postDAO.insert(postVO);
-		
-		result.setRedirect(true);
-		result.setPath("/mvcTask/list.post");
+		req.setAttribute("posts", postDAO.selectAll());
+		result.setPath("/list.jsp");
 		return result;
 	}
-
 }

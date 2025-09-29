@@ -7,8 +7,7 @@
    </settings>
 
 	<typeAliases>
-		<!-- <typeAlias type="com.app.vo.ProductVO" alias="productVO"></typeAlias> -->
-		<!-- <typeAlias type="com.app.vo.PostVO" alias="postVO"></typeAlias> -->
+		<typeAlias type="com.app.vo.PostVO" alias="postVO"></typeAlias>
 	</typeAliases>
 
    <environments default="oracle">
@@ -27,8 +26,7 @@
 	
 
    <mappers>
-   		<!-- <mapper resource="com/app/myBatis/mapper/productMapper.xml"></mapper> -->
-   		<!-- <mapper resource="com/app/myBatis/mapper/postMapper.xml"> -->
+   		<mapper resource="com/app/myBatis/mapper/postMapper.xml"></mapper>
    </mappers>
    
 </configuration>

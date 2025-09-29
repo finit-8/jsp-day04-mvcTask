@@ -4,5 +4,28 @@
    <insert id="insert" parameterType="postVO">
    		INSERT INTO TBL_POST VALUES(SEQ_POST.NEXTVAL, #{postTitle}, #{postContent})
    </insert>
+   
+   <select id="selectAll" resultType="postVO">
+   		SELECT ID, POST_TITLE, POST_CONTENT FROM TBL_POST
+   </select>
+   
+   <select id="select" parameterType="Long" resultType="postVO">
+   		SELECT ID, POST_TITLE, POST_CONTENT
+   		FROM TBL_POST
+   		WHERE ID = #{id}
+   </select>
+   
+   <update id="update" parameterType="PostVO">
+   		UPDATE TBL_POST
+   		SET 
+   			POST_TITLE = #{postTitle},
+   			POST_CONTENT = #{postContent}
+   		WHERE ID = #{id}
+   </update>
+   
+   <delete id="delete" parameterType="PostVO">
+   		DELETE FROM TBL_POST
+   		WHERE ID = #{id}
+   </delete>
    		
 </mapper>
