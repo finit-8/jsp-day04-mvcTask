@@ -34,6 +34,8 @@
 			}
 		%>
 	 </table>
-	
+		<div>
+			<a href='/mvcTask/write.post'>게시글 등록</a>
+		</div>
 </body>
 </html>

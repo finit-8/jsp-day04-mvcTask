@@ -20,7 +20,7 @@ public class PostReadController implements Action{
 		try {
 			req.setAttribute("post", postDAO.select(id).orElseThrow());
 		} catch (Exception e) {
-			req.setAttribute("message", "메시지를 찾을 수 없습니다.");
+			req.setAttribute("message", "게시글을 찾을 수 없습니다.");
 			result.setPath("/error.jsp");
 		}
 		

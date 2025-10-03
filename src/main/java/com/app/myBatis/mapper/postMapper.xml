@@ -23,7 +23,7 @@
    		WHERE ID = #{id}
    </update>
    
-   <delete id="delete" parameterType="PostVO">
+   <delete id="delete" parameterType="Long">
    		DELETE FROM TBL_POST
    		WHERE ID = #{id}
    </delete>

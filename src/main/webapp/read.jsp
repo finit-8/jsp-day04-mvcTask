@@ -11,6 +11,7 @@
 	<h1>됨?</h1>
 	<%
 		PostVO post = (PostVO)request.getAttribute("post");
+		System.out.println("read.jsp qa");
 		System.out.println(post);
 	%>
 	

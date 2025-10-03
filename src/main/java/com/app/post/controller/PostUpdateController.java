@@ -15,13 +15,13 @@ public class PostUpdateController implements Action {
 		Result result = new Result();	
 		PostDAO postDAO = new PostDAO();
 		Long id = Long.parseLong(req.getParameter("id"));
+		PostVO foundPost = postDAO.select(id).orElseThrow(PostNotFoundException::new);
 		
 		try {
-			PostVO foundPost = postDAO.select(id).orElseThrow(PostNotFoundException::new);
 			req.setAttribute("post", foundPost);
 		} catch (PostNotFoundException e) {
 			req.setAttribute("message", "게시글을 찾을 수 없음");
-			System.out.println("PostUpdateController Not Fount 에러 발생");
+			System.out.println("PostUpdateController Not Found 에러 발생");
 			result.setPath("/error.jsp");
 			return result;
 		}

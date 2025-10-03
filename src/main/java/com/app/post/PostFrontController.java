@@ -24,15 +24,19 @@ public class PostFrontController extends HttpServlet{
 		
 		if(target.equals("write")) {
 			result = new PostWriteController().execute(req, resp);
+			System.out.println("write페이지로 이동됨");
 		} else if(target.equals("write-ok")) {
 			result = new PostWriteOkController().execute(req, resp);
-			System.out.println("QA");
+			System.out.println("write-ok로 리다이렉트하여");
 		} else if(target.equals("list")) {
 			result = new PostListController().execute(req, resp);
+			System.out.println("list페이지로 이동됨");
 		} else if(target.equals("read")) {
 			result = new PostReadController().execute(req, resp);
+			System.out.println("read페이지로 이동됨");
 		} else if(target.equals("update")) {
 			result = new PostUpdateController().execute(req, resp);
+			System.out.println("update페이지로 이동됨");
 		} else if(target.equals("update-ok")) {
 			result = new PostUpdateOkController().execute(req,resp);
 		} else if(target.equals("delete-ok")) {
