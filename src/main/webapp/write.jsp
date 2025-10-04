@@ -7,19 +7,13 @@
 <title>게시글 작성</title>
 </head>
 <body>
-	<form action="/mvcTask/write-ok.post" method="get">
+	<h1>작성</h1>
+	<form action="/mvcTask/write-ok.post" method="post">
 		<div>
-			<span>게시글 제목</span><input name="postTitle" placeholder='제목입력' />
-		</div>		
-		<div>
-			<span>게시글 내용</span><input name="postContent" placeholder='내용입력'/>
-		</div>		
-		<button >게시글 등록</button>
+			<span>제목</span><p><input name="postTitle" placeholder="제목을 입력하세요"></p>
+			<span>내용</span><p><input name="postContent" placeholder="내용을 입력하세요"></p>
+			<button>등록하기</button>
+		</div>
 	</form>
 </body>
-<!-- <script type='text/javascript'/>
-	const form = document.querySelector("form");
-	const inputs = document.querySelectorAll("input");
-	const button = document.querySelector("button");
-</script> -->
 </html>

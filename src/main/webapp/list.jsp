@@ -1,5 +1,5 @@
-<%@page import="com.app.vo.PostVO"%>
 <%@page import="java.util.List"%>
+<%@page import="com.app.vo.PostVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,33 +9,32 @@
 <title>게시판</title>
 </head>
 <body>
-	<h1>졸려</h1>
-	<% 
-	 	List<PostVO> posts = (List<PostVO>)request.getAttribute("posts"); 	// 이제 다운캐스팅해서 +@ 쓸 수 있음 
-	 %>
-	 <table>
+	<h1>게시판</h1>
+	
+	<%
+		List<PostVO> list = (List<PostVO>)request.getAttribute("list");
+	%>	
+	
+	<table>
 		<tr>
-		 	<th>게시글번호</th>
-		 	<th>게시글명</th>
-		 	<th>게시글내용</th>
+			<th>게시글 번호</th>
+			<th>게시글 제목</th>
+			<th>게시글 내용</th>
 		</tr>
 		
 		<%
-			for(PostVO post: posts) {
+			for(PostVO post : list) {
 		%>
-			<tr>
-				<td><%=post.getId() %></td>
-				<td>
-					<a href='/mvcTask/read.post?id=<%=post.getId() %>'><%=post.getPostTitle() %></a> 
-				</td>
-				<td><%=post.getPostContent() %></td>
-			</tr>
+		
+		<tr>
+			<td><%=post.getId() %></td>
+			<td><a href="/mvcTask/read.jsp?id=<%=post.getId()%>"><%=post.getPostTitle() %></a></td>
+			<td><%=post.getPostContent() %></td>
+		</tr>
+		
 		<%
 			}
 		%>
-	 </table>
-		<div>
-			<a href='/mvcTask/write.post'>게시글 등록</a>
-		</div>
+	</table>
 </body>
 </html>

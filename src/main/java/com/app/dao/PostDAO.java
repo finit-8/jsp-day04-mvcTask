@@ -1,6 +1,6 @@
 package com.app.dao;
 
-import java.util.List; 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,23 +17,15 @@ public class PostDAO {
 	}																							// 즉 sql세션객체는 dao할당될 때 생성됨. 
 
 	public void insert(PostVO postVO) {
-		sqlSession.insert("post.insert", postVO);
+		sqlSession.insert("post.write", postVO);
 	}
 	
 	public List<PostVO> selectAll() {
-		List<PostVO> posts = sqlSession.selectList("post.selectAll");
-		return posts;
+		List<PostVO> list = sqlSession.selectList("post.selectAll");
+		return list;
 	}
 	
 	public Optional<PostVO> select(Long id) {
 		return Optional.ofNullable(sqlSession.selectOne("post.select", id));
-	}
-	
-	public void update(PostVO postVO) {
-		sqlSession.update("post.update", postVO);
-	}
-	
-	public void delete(Long id) {
-		sqlSession.delete("post.delete", id);
 	}
 }
