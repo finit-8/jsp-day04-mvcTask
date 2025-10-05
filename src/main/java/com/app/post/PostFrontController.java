@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
+import com.app.dao.PostDAO;
+import com.app.post.controller.PostDeleteOkController;
 import com.app.post.controller.PostListController;
 import com.app.post.controller.PostReadController;
+import com.app.post.controller.PostUpdateController;
+import com.app.post.controller.PostUpdateOkController;
 import com.app.post.controller.PostWriteController;
 import com.app.post.controller.PostWriteOkController;
 
@@ -34,10 +38,14 @@ public class PostFrontController extends HttpServlet{
 			System.out.println("read.jsp로 이동완료");
 			result = new PostReadController().execute(req, resp);
 		} else if(target.equals("update")) {
-			
+			System.out.println("update.jsp로 이동완료");
+			result = new PostUpdateController().execute(req, resp);
 		} else if(target.equals("update-ok")) {
-			
+			System.out.println("update.jsp에서 수정 완료하여");
+			result = new PostUpdateOkController().execute(req, resp);
 		} else if(target.equals("delete-ok")) {
+			System.out.println("삭제완료하여");
+			result = new PostDeleteOkController().execute(req, resp);
 			
 		}
 		

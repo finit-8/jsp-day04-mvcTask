@@ -11,16 +11,19 @@ import com.app.Result;
 import com.app.dao.PostDAO;
 import com.app.vo.PostVO;
 
-public class PostWriteOkController implements Action {
+public class PostUpdateOkController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
+		
 		PostDAO postDAO = new PostDAO();
 		PostVO postVO = new PostVO();
 		
+		postVO.setId(Long.parseLong(req.getParameter("id")));
 		postVO.setPostTitle(req.getParameter("postTitle"));
 		postVO.setPostContent(req.getParameter("postContent"));
+		
 		postDAO.update(postVO);
 		
 		result.setRedirect(true);

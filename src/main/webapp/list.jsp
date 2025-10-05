@@ -28,7 +28,7 @@
 		
 		<tr>
 			<td><%=post.getId() %></td>
-			<td><a href="/mvcTask/read.jsp?id=<%=post.getId()%>"><%=post.getPostTitle() %></a></td>
+			<td><a href="/mvcTask/read.post?id=<%=post.getId()%>"><%=post.getPostTitle() %></a></td>
 			<td><%=post.getPostContent() %></td>
 		</tr>
 		
@@ -36,5 +36,8 @@
 			}
 		%>
 	</table>
+		<div>
+			<a href="/mvcTask/write.post">게시글 작성</a>
+		</div>
 </body>
 </html>

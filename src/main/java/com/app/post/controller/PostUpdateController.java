@@ -12,7 +12,7 @@ import com.app.dao.PostDAO;
 import com.app.exception.PostNotFoundException;
 import com.app.vo.PostVO;
 
-public class PostReadController implements Action {
+public class PostUpdateController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -22,14 +22,17 @@ public class PostReadController implements Action {
 		
 		try {
 			Long id = Long.parseLong(req.getParameter("id"));
-			PostVO post = postDAO.select(id).orElseThrow(PostNotFoundException::new);
+			PostVO postVO = postDAO.select(id).orElseThrow(PostNotFoundException::new);		
 			
-			req.setAttribute("post", post);
-			result.setPath("/read.jsp");
+			req.setAttribute("post", postVO);
+			result.setPath("/update.jsp");
+			
 		} catch (PostNotFoundException e) {
-			req.setAttribute("message", "게시글을 찾을 수 없습니다.");
+			System.out.println("PostUpdateController 오류발생");
+			req.setAttribute("message", "게시글을 찾을 수 없습니다");
 			result.setPath("/error.jsp");
 		}
+		
 		
 		return result;
 	}
