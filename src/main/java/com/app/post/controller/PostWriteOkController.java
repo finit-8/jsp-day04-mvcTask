@@ -16,12 +16,15 @@ public class PostWriteOkController implements Action {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
+		
 		PostDAO postDAO = new PostDAO();
 		PostVO postVO = new PostVO();
 		
+//		postVO.setId(Long.parseLong(req.getParameter("id")));
 		postVO.setPostTitle(req.getParameter("postTitle"));
 		postVO.setPostContent(req.getParameter("postContent"));
-		postDAO.update(postVO);
+		
+		postDAO.insert(postVO);
 		
 		result.setRedirect(true);
 		result.setPath("/mvcTask/list.post");

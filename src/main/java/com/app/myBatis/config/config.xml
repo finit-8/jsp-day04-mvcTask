@@ -22,8 +22,6 @@
       </environment>
    </environments>
 
-	
-	
 
    <mappers>
    		<mapper resource="com/app/myBatis/mapper/postMapper.xml"></mapper>

@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title>게시글 목록</title>
 </head>
 <body>
-	<h1>게시판</h1>
+	<h1>게시글 목록</h1>
 	
 	<%
-		List<PostVO> list = (List<PostVO>)request.getAttribute("list");
-	%>	
+		List<PostVO> posts = (List<PostVO>)request.getAttribute("posts");
+	%>
 	
 	<table>
 		<tr>
@@ -22,22 +22,19 @@
 			<th>게시글 내용</th>
 		</tr>
 		
+		
 		<%
-			for(PostVO post : list) {
+			for(PostVO post : posts) {
 		%>
-		
-		<tr>
-			<td><%=post.getId() %></td>
-			<td><a href="/mvcTask/read.post?id=<%=post.getId()%>"><%=post.getPostTitle() %></a></td>
-			<td><%=post.getPostContent() %></td>
-		</tr>
-		
+			<tr>
+				<td><%=post.getId() %></td>
+				<td><a href="/mvcTask/read.post?id=<%=post.getId()%>"></a><%=post.getPostTitle() %></td>
+				<td><%=post.getPostContent() %></td>
+			</tr>
 		<%
 			}
 		%>
 	</table>
-		<div>
-			<a href="/mvcTask/write.post">게시글 작성</a>
-		</div>
+	
 </body>
 </html>

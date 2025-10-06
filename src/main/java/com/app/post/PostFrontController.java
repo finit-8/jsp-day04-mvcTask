@@ -7,13 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.app.Result;
-import com.app.dao.PostDAO;
-import com.app.post.controller.PostDeleteOkController;
 import com.app.post.controller.PostListController;
-import com.app.post.controller.PostReadController;
-import com.app.post.controller.PostUpdateController;
-import com.app.post.controller.PostUpdateOkController;
 import com.app.post.controller.PostWriteController;
 import com.app.post.controller.PostWriteOkController;
 
@@ -23,30 +20,24 @@ public class PostFrontController extends HttpServlet{
 		Result result = null;
 		
 		String target = req.getRequestURI().replace(req.getContextPath() + "/", "").split("\\.")[0];
-		System.out.println(target);
 		
 		if(target.equals("write")) {
+			System.out.println("write도착");
 			result = new PostWriteController().execute(req, resp);
-			System.out.println("write.jsp로 이동완료");
 		} else if(target.equals("write-ok")) {
-			System.out.println("write.jsp에서 폼 작성제출완료하여");
+			System.out.println("Ok컨트롤러가 리다이렉트하여");
 			result = new PostWriteOkController().execute(req, resp);
 		} else if(target.equals("list")) {
-			System.out.println("list.jsp로 이동완료");
+			System.out.println("list에 도착");
 			result = new PostListController().execute(req, resp);
-		} else if(target.equals("read")) {
-			System.out.println("read.jsp로 이동완료");
-			result = new PostReadController().execute(req, resp);
 		} else if(target.equals("update")) {
-			System.out.println("update.jsp로 이동완료");
-			result = new PostUpdateController().execute(req, resp);
-		} else if(target.equals("update-ok")) {
-			System.out.println("update.jsp에서 수정 완료하여");
-			result = new PostUpdateOkController().execute(req, resp);
-		} else if(target.equals("delete-ok")) {
-			System.out.println("삭제완료하여");
-			result = new PostDeleteOkController().execute(req, resp);
 			
+		} else if(target.equals("update-ok")) {
+			
+		} else if(target.equals("delete-ok")) {
+			
+		} else {
+			// 404 not found
 		}
 		
 		if(result != null) {
@@ -56,6 +47,7 @@ public class PostFrontController extends HttpServlet{
 				req.getRequestDispatcher(result.getPath()).forward(req, resp);
 			}
 		}
+		
 	}
 	
 	@Override
