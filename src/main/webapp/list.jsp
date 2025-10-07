@@ -28,13 +28,15 @@
 		%>
 			<tr>
 				<td><%=post.getId() %></td>
-				<td><a href="/mvcTask/read.post?id=<%=post.getId()%>"></a><%=post.getPostTitle() %></td>
+				<td><a href="/mvcTask/read.post?id=<%=post.getId()%>"><%=post.getPostTitle() %></a></td>
 				<td><%=post.getPostContent() %></td>
 			</tr>
 		<%
 			}
 		%>
 	</table>
-	
+	<div>
+		<a href="/mvcTask/write.post">작성하기</a>
+	</div>
 </body>
 </html>

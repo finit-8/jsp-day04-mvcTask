@@ -23,4 +23,17 @@ public class PostDAO {
 		List<PostVO> posts = sqlSession.selectList("post.selectAll");
 		return posts;
 	}
+	
+	public Optional<PostVO> select(Long id) {
+		return Optional.ofNullable(sqlSession.selectOne("post.select", id));
+	}
+	
+	public void update(PostVO postVO) {
+		sqlSession.update("post.update", postVO);
+	}
+	
+	public void delete(Long id) {
+		sqlSession.delete("post.delete", id);
+	}
+	
 }

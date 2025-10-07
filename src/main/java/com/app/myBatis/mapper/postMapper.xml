@@ -11,6 +11,14 @@
  	</select>
  	
  	<select id="select" parameterType="long" resultType="postVO">
- 		
+ 		SELECT ID, POST_TITLE, POST_CONTENT FROM TBL_POST WHERE ID = #{id}
  	</select>
+ 	
+ 	<update id="update" parameterType="postVO">
+ 		UPDATE TBL_POST SET POST_TITLE = #{postTitle}, POST_CONTENT = #{postContent} WHERE ID = #{id}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="long">
+ 		DELETE FROM TBL_POST WHERE ID = #{id}
+ 	</delete>
 </mapper>
